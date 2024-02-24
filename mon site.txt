@@ -1,0 +1,26 @@
+jeu en cours de developpement (bientot terminé):
+-tetris 
+-snake
+-sudoku
+-morpion
+-vaisseau
+-memory
+-
+-
+
+jeu loin d'être terminé:
+-doom
+-puissance 4
+-jeu de plateforme (game)
+-crazy touch
+-jeu (jeu de ressources)
+-
+-
+
+jeu completement raté:
+-labyrinthe
+-myster
+-roguelike
+-puzzle
+-tank
+-

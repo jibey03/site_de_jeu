@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simple Game</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+  }
+  canvas {
+    border: 1px solid #d3d3d3;
+    background-color: #f1f1f1;
+    margin: 20px auto;
+    display: block;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin: 5px;
+  }
+</style>
+</head>
+<body>
+<canvas id="myCanvas" width="480" height="270"></canvas>
+<br>
+<button id="upButton">UP</button>
+<button id="restartButton" style="display: none;">Restart</button>
+<button id="nextLevelButton" style="display: none;" onclick="window.location.href='Up4.html';" disabled>Étage suivant</button>
+<p>Use the UP button to stay in the air</p>
+<p>How long can you stay alive?</p>
+<!-- <p>Obstacles avoided: <span id="obstaclesAvoided">0</span></p> -->
+
+<audio id="collisionSound">
+  <source src="collision.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<script>
+  var myGamePiece;
+  var myObstacles = [];
+  var myScore;
+  var obstaclesAvoided = 0;
+  var obstacleSpeed = 1;
+
+  function startGame() {
+    myGamePiece = new component(30, 30, "blue", 10, 120);
+    myGamePiece.gravity = 0.05;
+    myScore = new component("30px", "Consolas", "black", 280, 40, "text");
+    myGameArea.start();
+  }
+
+  var myGameArea = {
+    canvas : document.getElementById("myCanvas"),
+    start : function() {
+      this.context = this.canvas.getContext("2d");
+      this.frameNo = 0;
+      this.interval = setInterval(updateGameArea, 20);
+    },
+    clear : function() {
+      this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+  }
+
+  function component(width, height, color, x, y, type) {
+    this.type = type;
+    this.score = 0;
+    this.width = width;
+    this.height = height;
+    this.speedX = 0;
+    this.speedY = 0;    
+    this.x = x;
+    this.y = y;
+    this.gravity = 0;
+    this.gravitySpeed = 0;
+    this.update = function() {
+      ctx = myGameArea.context;
+      if (this.type == "text") {
+        ctx.font = this.width + " " + this.height;
+        ctx.fillStyle = color;
+        ctx.fillText(this.text, this.x, this.y);
+      } else {
+        ctx.fillStyle = color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+      }
+    }
+    this.newPos = function() {
+      this.gravitySpeed += this.gravity;
+      this.x += this.speedX;
+      this.y += this.speedY + this.gravitySpeed;
+      this.hitBottom();
+    }
+    this.hitBottom = function() {
+      var rockbottom = myGameArea.canvas.height - this.height;
+      if (this.y > rockbottom) {
+        this.y = rockbottom;
+        this.gravitySpeed = 0;
+      }
+    }
+    this.crashWith = function(otherobj) {
+      var myleft = this.x;
+      var myright = this.x + (this.width);
+      var mytop = this.y;
+      var mybottom = this.y + (this.height);
+      var otherleft = otherobj.x;
+      var otherright = otherobj.x + (otherobj.width);
+      var othertop = otherobj.y;
+      var otherbottom = otherobj.y + (otherobj.height);
+      var crash = true;
+      if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+        crash = false;
+      }
+      return crash;
+    }
+  }
+
+  function updateGameArea() {
+    var x, height, gap, minHeight, maxHeight, minGap, maxGap;
+    for (i = 0; i < myObstacles.length; i += 1) {
+      if (myGamePiece.crashWith(myObstacles[i])) {
+        clearInterval(myGameArea.interval);
+        document.getElementById("restartButton").style.display = "block";
+        document.getElementById("collisionSound").play();
+        flashRed();
+        return;
+      } 
+    }
+    myGameArea.clear();
+    myGameArea.frameNo += 1;
+    if (myGameArea.frameNo == 1 || everyinterval(150)) {
+      x = myGameArea.canvas.width;
+      minHeight = 20;
+      maxHeight = 200;
+      height = Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
+      minGap = 50;
+      maxGap = 200;
+      gap = Math.floor(Math.random()*(maxGap-minGap+1)+minGap);
+      myObstacles.push(new component(10, height, "red", x, 0));
+      myObstacles.push(new component(10, x - height - gap, "red", x, height + gap));
+    }
+    for (i = 0; i < myObstacles.length; i += 1) {
+      myObstacles[i].x += -obstacleSpeed;
+      myObstacles[i].update();
+    }
+    myScore.text="SCORE: " + myGameArea.frameNo;
+    myScore.update();
+    myGamePiece.newPos();
+    myGamePiece.update();
+
+    if (everyinterval(300)) {
+      obstacleSpeed += 1;
+    }
+
+    if (myGameArea.frameNo >= 5000) {
+      document.getElementById("nextLevelButton").disabled = false;
+      clearInterval(myGameArea.interval); // Stop the game
+    }
+  }
+
+  function everyinterval(n) {
+    return (myGameArea.frameNo / n) % 1 == 0;
+  }
+
+  document.getElementById("upButton").addEventListener("mousedown", function() {
+    accelerate(-0.1);
+  });
+
+  document.getElementById("upButton").addEventListener("mouseup", function() {
+    accelerate(0.05);
+  });
+
+  document.getElementById("restartButton").addEventListener("click", function() {
+    restartGame();
+  });
+
+  function accelerate(n) {
+    myGamePiece.gravity = n;
+  }
+
+  function restartGame() {
+    myObstacles = [];
+    obstaclesAvoided = 0;
+    obstacleSpeed = 1;
+    myGamePiece.gravity = 0.05;
+    myGameArea.frameNo = 0;
+    document.getElementById("restartButton").style.display = "none";
+    startGame();
+  }
+
+  function flashRed() {
+    var canvas = document.getElementById("myCanvas");
+    canvas.style.backgroundColor = "red";
+    setTimeout(function() {
+      canvas.style.backgroundColor = "#f1f1f1";
+    }, 100);
+  }
+
+  startGame();
+</script>
+</body>
+</html>
