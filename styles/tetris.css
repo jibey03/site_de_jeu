@@ -11,3 +11,179 @@ body {
 canvas {
     border: 1px solid #000;
 }
+
+
+.navbar {
+    background-color: #5D5D9B;
+    color: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between; /* Ajout pour espacer les éléments à l'intérieur de la navbar */
+    align-items: center; /* Aligne les items verticallement dans la navbar */
+    border-radius: 20px; /* Ajoute un bord arrondi */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1); /* Ajoute une ombre */
+    height: 90px; /* Ajuste la hauteur de la navbar */
+    }
+    
+  .cart-icon {
+      font-size: 40px; /* Ajuste la taille du panier selon vos besoins */
+      margin-right: 30px; /* Ajoute de la marge à droite du panier */
+  }
+  
+  .menu-icon {
+    font-size: 24px; /* taille des trois barres du menu */
+    line-height: 24px; /* Ajuste la hauteur de ligne */
+  }
+  
+  .search-container {
+    margin-left: 40px; /* Ajout de marge à gauche pour décaler la barre de recherche */
+    margin-right: auto; /* Met la barre de recherche à droite */
+  }
+  
+  
+  .auth-buttons {
+    margin-top: 20px; /* Espacement entre la barre de recherche et le bouton */
+    margin-right: 15px; /* Décale légèrement le bouton de connexion vers la gauche */
+  }
+  
+  .market-title {
+    margin: 0; /* Réinitialisation de la marge */
+    margin-left: 30px; /* Ajout de marge à gauche pour décaler le titre */
+  }
+  
+  .search-container input[type=text] {
+    padding: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    border: none;
+  }
+  
+  .rounded-button {
+    border-radius: 20px; /* arrondissement du bouton */
+    padding: 8px 15px; 
+    margin-left: -15px; 
+  }
+  
+  .search-container button {
+    padding: 8px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    background: #2ecc71; /* Vert */
+    border: none;
+    cursor: pointer;
+    color: white;
+  }
+  
+  .sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #9AD6F9; /* Bleu */
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    text-align: center;
+  }
+  
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 18px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  .sidenav a:hover {
+    color: #ffffff;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
+  }
+  
+  .sidenav-title {
+      background-color: #3498db; /* Couleur du bandeau */
+      font-size: 24px; /* Ajustement de la taille du texte du bandeau */
+      color: white;
+      padding: 20px 0;
+      margin: 0; /* Réinitialiser la marge par défaut */
+  }
+  
+  .profile-icon {
+      font-size: 40px; /* Augmentation de la taille de l'icône */
+      cursor: pointer; /* Curseur de souris indiquant une action interactive */
+      text-decoration: none;
+      margin-right: 40px; /* Décalage de 60 pixels vers la gauche */
+  }
+  
+  .content {
+      position: absolute;
+              top: 100px;
+              left: 300px;
+              right: 220px;
+              padding: 20px;
+              background-color: #fff;
+              border-radius: 10px;
+              box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    display: none;
+    background-color: black;
+  }
+  
+  .scroll-to-top:hover {
+    background-color: black;
+  }
+  
+  @media screen and (max-height: 450px) {
+    .sidenav {padding-top: 15px;}
+    .sidenav a {font-size: 16px;}
+  }
+  
+  .navbar.bottom {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999; 
+    background-color: #5D5D9BD4;
+  }
+  
+  .bottom {
+      display: flex; /* Utilisation de flexbox */
+      justify-content: center; /* Centrer horizontalement */
+      align-items: center; /* Centrer verticalement */
+      height: 60px; /* Ajustement de la hauteur */
+  }
+  
+  .bottom a { /* lien de la navbar bottom */
+      margin: 0 25px; /* Espacement entre les liens */
+      color: black; /* Définit la couleur du texte des liens en bas de page en noir */
+  }
+  
+  
+  footer {
+    padding: 10px 0;
+    color: white; /* Changez la couleur du texte */
+    font-size: 6px; /* Ajuster la taille de police */
+    margin-bottom: -65px;
+  }

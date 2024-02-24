@@ -24,3 +24,83 @@ jeu completement raté:
 -puzzle
 -tank
 -
+
+
+
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (main)
+$ git pull
+Already up to date.
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (main)
+$ git branch thierry
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (main)
+$ git checkout thierry
+Switched to branch 'thierry'
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (thierry)
+$ git add *
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (thierry)
+$ git status
+On branch thierry
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   EverGame.html
+        modified:   mon site.txt
+        modified:   styles/EverGame.css
+
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (thierry)
+$ git add *
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (thierry)
+$ git commit -m "salut"
+Author identity unknown
+
+*** Please tell me who you are.
+
+Run
+
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
+
+to set your account's default identity.
+Omit --global to set the identity only in this repository.
+
+fatal: unable to auto-detect email address (got 'thier@DESKTOP-0AG8VH2.(none)') 
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (thierry)
+$ git config --global user.email "you@example.com"
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (thierry)
+$   git config --global user.name "Thierry"
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (thierry)
+$ git config --global user.name "pijonsauvaj"
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (thierry)
+$ git config --global user.email "thierry2003email.fr@gmail.com"
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (thierry)
+$ git commit -m "salut"
+[thierry 888c0f4] salut
+ 3 files changed, 5 insertions(+), 4 deletions(-)
+
+thier@DESKTOP-0AG8VH2 MINGW64 ~/Desktop/site_de_jeu (thierry)
+$ git push origin thierry
+info: please complete authentication in your browser...
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (6/6), 554 bytes | 138.00 KiB/s, done.
+Total 6 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+remote:
+remote: Create a pull request for 'thierry' on GitHub by visiting:
+remote:      https://github.com/jibey03/site_de_jeu/pull/new/thierry
+remote:
+To https://github.com/jibey03/site_de_jeu
+ * [new branch]      thierry -> thierry

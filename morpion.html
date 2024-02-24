@@ -7,6 +7,38 @@
     <link rel="stylesheet" type="text/css" href="styles/morpion.css">
 </head>
 <body>
+    <div class="navbar green-background">
+        <span class="menu-icon" onclick="toggleNav()">&#9776; <!-- Menu --> </span>
+        <h2 class="market-title">Feel Board</h2>
+        <div class="search-container">
+          <input type="text" id="searchInput" placeholder="Rechercher...">
+          <button onclick="search()">Rechercher</button>
+        </div>
+        <a href="profil.php" class="profile-icon">&#128104;</a> <!-- Ajout de l'icône de profil avec lien vers profil.php -->
+      </div>
+    
+      <div id="mySidenav" class="sidenav">
+        <h2 class="sidenav-title">Feel Board</h2> <!-- Bandeau dans la sidenav -->
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <br /> <br />
+        <a href="EverGame.html" style="color:black;">Accueil</a>
+        <a href="sudoku.html" style="color:black;">Sudoku</a>
+        <a href="snake.html" style="color:black;">Snake</a>
+        <a href="tetris.html" style="color:black;">tetris</a>
+        <a href="memory.html" style="color:black;">Memory</a>
+        <a href="morpion.html" style="color:black;">Morpion</a>
+        <a href="vaisseau.html" style="color:black;">Tir</a>
+        <a href="Up2floor.html" style="color:black;">Jump</a>
+        <a href="Up2.html" style="color:black;">Jump infinity</a>
+      <a href="puissance4.html" style="color:black;">Puissance 4</a>
+        <br /> <br /> <br /> <br />
+        <a href="blog" style="color:black;">Blog</a>
+        <a href="sponsors" style="color:black;">Sponsors</a>
+        <br /> <br /> <br /> <br />
+        <br /> <br /> <br /> <br />
+        <br /> <br /> <br /> <br />
+      </div>
+
     <div class="board" id="board">
         <div class="cell" onclick="placeMarker(0)"></div>
         <div class="cell" onclick="placeMarker(1)"></div>
@@ -22,6 +54,17 @@
     <div id="result"></div>
 
     <button onclick="replay-button">Replay</button>
+
+    <button class="scroll-to-top" onclick="scrollToTop()">&#8679;</button>
+
+  <div class="navbar bottom">
+    <a href="Contact.php">Contact</a>
+    <a href="#conditions">Conditions générales d'utilisation</a>
+    <a href="#about">À propos de nous</a>
+    <footer>
+        <p>&copy; 2023 EverGame. Tous droits réservés.</p>
+    </footer>
+  </div> 
 
     <script src="script/morpion2.js"></script>
 </body>
