@@ -5,7 +5,7 @@ body {
 }
 
 .navbar {
-  background-color: #E73334;
+  background-color: #5D5D9B;
   color: white;
   padding: 15px;
   display: flex;
@@ -156,7 +156,7 @@ body {
   bottom: 0;
   width: 100%;
   z-index: 999; 
-  background-color: #E73334;
+  background-color: #5D5D9BD4;
 }
 
 .bottom {

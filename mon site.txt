@@ -14,8 +14,8 @@ jeu loin d'être terminé:
 -jeu de plateforme (game)
 -crazy touch
 -jeu (jeu de ressources)
--
--
+-coin challenge
+-Jump
 
 jeu completement raté:
 -labyrinthe
